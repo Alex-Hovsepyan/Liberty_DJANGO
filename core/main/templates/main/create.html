@@ -1,0 +1,111 @@
+{% extends 'main/base.html' %}
+  {% block body %}
+    <div class="page-heading normal-space">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <h6>{{ general_title.title4 }}</h6>
+          <h2>{{ general_title.subtitle4 }}</h2>
+          <span>Home > <a href="#">{{ general_title.page_name4 }}</a></span>
+              <div class="buttons">
+                <div class="main-button">
+                  <a href="{% url 'explore' %}">{{ general_title.btn_name1 }}</a>
+                </div>
+                <div class="border-button">
+                  <a href="{% url 'create' %}">{{ general_title.btn_name2 }}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="item-details-page">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="section-heading">
+              <div class="line-dec"></div>
+              <h2>{{ titles.title7 }} <em>{{ titles.colored_title7 }}</em></h2>
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <form id="contact" method="post">
+              {% csrf_token %}
+              <div class="row">
+                <div class="col-lg-4">
+                  <fieldset>
+                    <label for="title">{{ create_get.title }}</label>
+                    <input type="title" name="user_title" id="title" placeholder="Ex. Lyon King" autocomplete="on" required>
+                  </fieldset>
+                </div>
+                <div class="col-lg-4">
+                  <fieldset>
+                    <label for="description">{{ create_get.description }}</label>
+                    <input type="description" name="user_description" id="description" placeholder="Give us your idea" autocomplete="on" required>
+                  </fieldset>
+                </div>
+                <div class="col-lg-4">
+                  <fieldset>
+                    <label for="username">{{ create_get.username }}</label>
+                    <input type="username" name="user_name" id="username" placeholder="Ex. @alansmithee" autocomplete="on" required>
+                  </fieldset>
+                </div>
+                <div class="col-lg-6">
+                  <fieldset>
+                    <label for="price">{{ create_get.price }}</label>
+                    <input type="price" name="user_price" id="price" placeholder="Price depends on quality. Ex. 0.06 ETH" autocomplete="on" required>
+                  </fieldset>
+                </div>
+                <div class="col-lg-6">
+                  <fieldset>
+                    <label for="royalities">{{ create_get.royalty }}</label>
+                    <input type="royalities" name="user_royalty" id="royalities" placeholder="Common royalties 1-25%" autocomplete="on" required>
+                  </fieldset>
+                </div>
+                <div class="col-lg-4">
+                  <fieldset>
+                    <label for="file">{{ create_get.file_name }}</label>
+                    <input type="file" id="file" multiple />
+                  </fieldset>
+                </div>
+                <div class="col-lg-8">
+                  <fieldset>
+                    <button type="submit" id="form-submit" class="orange-button">{{ create_get.btn_name }}</button>
+                  </fieldset>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-lg-12">
+            <div class="section-heading">
+              <div class="line-dec"></div>
+              <h2>{{ titles.title8 }} <em>{{ titles.colored_title8 }}</em></h2>
+            </div>
+          </div>
+          <div class="col-lg-7">
+            <div class="left-image">
+              <img src="{{ create_preview.img.url }}" alt="" style="border-radius: 20px;">
+            </div>
+          </div>
+          <div class="col-lg-5 align-self-center">
+            <h4>{{ create_preview.title }}</h4>
+            <span class="author">
+              <img src="{{ create_preview.profile_img.url }}" alt="" style="max-width: 50px; border-radius: 50%;">
+              <h6>{{ create_preview.name }}<br><a href="#">@{{ create_preview.name_link }}</a></h6>
+            </span>
+            <p>{{ create_preview.text }}</p>
+            <div class="row">
+              {% for i in create_preview_content %}
+                <div class="col-3">
+                  <span class="bid">
+                    {{ i.title }}<br><strong>{{ i.info1 }}</strong><br><em>({{ i.info2 }})</em>
+                  </span>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}

@@ -1,0 +1,108 @@
+{% extends 'main/base.html' %}
+  {% block body %}
+  <div class="page-heading normal-space">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <h6>{{ general_title.title3 }}</h6>
+          <h2>{{ general_title.subtitle3 }}</h2>
+          <span>Home > <a href="#">{{ general_title.page_name3 }}</a></span>
+            <div class="buttons">
+              <div class="main-button">
+                <a href="{% url 'explore' %}">{{ general_title.btn_name1 }}</a>
+              </div>
+              <div class="border-button">
+                <a href="{% url 'create' %}">{{ general_title.btn_name2 }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="author-page">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="author">
+              <img src="{{ author.img.url }}" alt="" style="border-radius: 50%; max-width: 170px;">
+              <h4>{{ author.name }} <br> <a href="#">@{{ author.name_link }}</a></h4>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="right-info">
+              <div class="row">
+                <div class="col-4">
+                  <div class="info-item">
+                    <i class="fa fa-heart"></i>
+                    <h6>{{ author.like_count1 }} <em>{{ author.like }}</em></h6>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="info-item">
+                    <i class="fa fa-hand"></i>
+                    <h6>{{ author.like_count2 }} <em>{{ author.hand }}</em></h6>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="info-item">
+                    <i class="fa fa-dollar"></i>
+                    <h6>{{ author.like_count3 }} <em>{{ author.dollar }}</em></h6>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-5">
+                  <h5>{{ author.followers }}</h5>
+                </div>
+                <div class="col-7">
+                  <div class="main-button">
+                    <a href="#">{{ author.btn_name }} @{{ author.name_link }}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="section-heading">
+              <div class="line-dec"></div>
+              <h2>{{ titles.title6 }} <em>{{ titles.colored_title6 }}</em></h2>
+            </div>
+          </div>
+          {% for i in author_content %}
+            <div class="col-lg-3 col-md-6">
+              <div class="item">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <span class="author">
+                      <img src="{{ i.profile_img.url }}" alt="" style="max-width: 50px; border-radius: 50%;">
+                    </span>
+                    <img src="{{ i.img.url }}" alt="" style="border-radius: 20px;">
+                    <h4>{{ i.title }}</h4>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="line-dec"></div>
+                    <div class="row">
+                      <div class="col-6">
+                        <span>{{ i.subtitle1 }} <br> <strong>{{ i.info1 }}</strong></span>
+                      </div>
+                      <div class="col-6">
+                        <span>{{ i.subtitle2 }} <br> <strong>{{ i.info2 }}</strong></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="main-button">
+                      <a href="/detail/1/">{{ i.btn_name }}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    {% include 'inc/_your_nft.html' %}
+  {% endblock %}

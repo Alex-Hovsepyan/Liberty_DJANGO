@@ -1,0 +1,155 @@
+{% extends 'main/base.html' %}
+  {% block body %}
+    <!-- ***** Main Banner Area Start ***** -->
+    <div class="main-banner">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 align-self-center">
+            <div class="header-text">
+              <h6>{{ homepage1.title }}</h6>
+              <h2>{{ homepage1.subtitle }}. &amp;</h2>
+              <p>{{ homepage1.text }}</p>
+              <div class="buttons">
+                <div class="border-button">
+                  <a href="explore.html">{{ homepage1.btn_name1 }}</a>
+                </div>
+                <div class="main-button">
+                  <a href="https://youtube.com/templatemo" target="_blank">{{ homepage1.btn_name2 }}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 offset-lg-1">
+            <div class="owl-banner owl-carousel">
+              <div class="item">
+                <img src="{{ homepage1.img1.url }}" alt="">
+              </div>
+              <div class="item">
+                <img src="{{ homepage1.img2.url }}" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+
+    <div class="categories-collections">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="categories">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="section-heading">
+                    <div class="line-dec"></div>
+                    <h2>{{ titles.title1 }} <em>{{ titles.colored_title1 }}</em></h2>
+                  </div>
+                </div>
+                {% for i in homepage_category %}
+                  <div class="col-lg-2 col-sm-6">
+                    <div class="item">
+                      <div class="icon">
+                        <img src="{{ i.img.url }}" alt="">
+                      </div>
+                      <h4>{{ i.title }}</h4>
+                      <div class="icon-button">
+                        <a href="#"><i class="fa fa-angle-right"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                {% endfor %}
+                
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="collections">
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="section-heading">
+                    <div class="line-dec"></div>
+                    <h2>{{ titles.title2 }} <em>{{ titles.colored_title2 }}</em></h2>
+                  </div>
+                </div>
+                <div class="col-lg-12">
+                  <div class="owl-collection owl-carousel">
+                    {% for j in homepage_collection %}
+                      <div class="item">
+                        <img src="{{ j.img.url }}" alt="">
+                        <div class="down-content">
+                          <h4>{{ j.title }}</h4>
+                          <span class="collection">{{ j.subtitle1 }}:<br><strong>{{ j.subtitle1_info }}</strong></span>
+                          <span class="category">{{ j.subtitle2 }}:<br><strong>{{ j.subtitle2_info }}</strong></span>
+                          <div class="main-button">
+                            <a href="{% url 'explore' %}">{{ j.btn_name }}</a>
+                          </div>
+                        </div>
+                      </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {% include 'inc/_your_nft.html' %}
+
+    <div class="currently-market">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="section-heading">
+              <div class="line-dec"></div>
+              <h2><em>{{ titles.colored_title3 }}</em> {{ titles.title3 }}</h2>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="filters">
+              <ul>
+                <li data-filter="*"  class="active">{{ home_items_path.path1 }}</li>
+                <li data-filter=".msc">{{ home_items_path.path2 }}</li>
+                <li data-filter=".dig">{{ home_items_path.path3 }}</li>
+                <li data-filter=".blc">{{ home_items_path.path4 }}</li>
+                <li data-filter=".vtr">{{ home_items_path.path5 }}</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-12">
+            <div class="row grid">
+              {% for i in home_items_content %}
+                <div class="col-lg-6 currently-market-item all {{ i.code }}">
+                  <div class="item">
+                    <div class="left-image">
+                      <img src="{{ i.img1.url }}" alt="" style="border-radius: 20px; min-width: 195px;">
+                    </div>
+                    <div class="right-content">
+                      <h4>{{ i.title }}</h4>
+                      <span class="author">
+                        <img src="{{ i.img2.url }}" alt="" style="max-width: 50px; border-radius: 50%;">
+                        <h6>{{ i.name }}<br><a href="">@{{ i.name_link }}</a></h6>
+                      </span>
+                      <div class="line-dec"></div>
+                      <span class="bid">
+                        {{ i.subtitle1 }}<br><strong>{{ i.current_bid }}</strong><br><em>(${{ i.bid_price }})</em>
+                      </span>
+                      <span class="ends">
+                        {{ i.subtitle2 }}<br><strong>{{ i.last_bid }}</strong><br><em>({{ i.date }})</em>
+                      </span>
+                      <div class="text-button">
+                        <a href="{% url 'index_detail' i.id %}">{{ i.btn_name }}</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+              <!--  msc dig blc vtr vrtdig mscblc-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endblock %}

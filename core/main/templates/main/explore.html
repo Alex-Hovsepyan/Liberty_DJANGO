@@ -1,0 +1,195 @@
+{% extends 'main/base.html' %}
+
+  {% block body %}
+      <div class="page-heading">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <h6>{{ general_title.title1 }}</h6>
+              <h2>{{ general_title.subtitle1 }}</h2>
+              <span>Home > <a href="#">{{ general_title.page_name1 }}</a></span>
+            </div>
+          </div>
+        </div>
+        <div class="featured-explore">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="owl-features owl-carousel">
+                  {% for i in explore_top_items %}
+                    <div class="item">
+                      <div class="thumb">
+                        <img src="{{ i.img.url }}" alt="" style="border-radius: 20px;">
+                        <div class="hover-effect">
+                          <div class="content">
+                            <h4>{{ i.inheritence.title }}</h4>
+                            <span class="author">
+                              <img src="{{ i.inheritence.img2.url }}" alt="" style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                              <h6>{{ i.inheritence.name }}<br><a href="#">@{{ i.inheritence.name_link }}</a></h6>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="discover-items">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-5">
+              <div class="section-heading">
+                <div class="line-dec"></div>
+                <h2>{{ titles.title4 }} <em>{{ titles.colored_title4 }}</em>.</h2>
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <form id="search-form" name="gs" method="submit" role="search" action="#">
+                <div class="row">
+                  <div class="col-lg-4">
+                    <fieldset>
+                        <input type="text" name="keyword" class="searchText" placeholder="Type Something..." autocomplete="on" required>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-3">
+                    <fieldset>
+                        <select name="Category" class="form-select" aria-label="Default select example" id="chooseCategory" onchange="this.form.click()">
+                            <option selected>All Categories</option>
+                            <option type="checkbox" name="option1" value="Music">Music</option>
+                            <option value="Digital">Digital</option>
+                            <option value="Blockchain">Blockchain</option>
+                            <option value="Virtual">Virtual</option>
+                        </select>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-3">
+                    <fieldset>
+                        <select name="Price" class="form-select" aria-label="Default select example" id="chooseCategory" onchange="this.form.click()">
+                            <option selected>Available</option>
+                            <option value="Ending-Soon">Ending Soon</option>
+                            <option value="Coming-Soon">Coming Soon</option>
+                            <option value="Closed">Closed</option>
+                        </select>
+                    </fieldset>
+                  </div>
+                  <div class="col-lg-2">                        
+                    <fieldset>
+                        <button class="main-button">Search</button>
+                    </fieldset>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-lg-6">
+              <div class="item">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <span class="banner">{{ explore_first_item.btn_name1 }}</span>
+                  </div>
+                  <div class="col-lg-6 col-sm-6">
+                    <span class="author">
+                      <img src="{{ explore_first_item.profile_img1.url }}" alt="" style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                    </span>
+                    <img src="{{ explore_first_item.img1.url }}" alt="" style="border-radius: 20px;">
+                    <h4>{{ explore_first_item.title1 }}</h4>
+                  </div>
+                  <div class="col-lg-6 col-sm-6">
+                    <span class="author">
+                      <img src="{{ explore_first_item.profile_img2.url }}" alt="" style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                    </span>
+                    <img src="{{ explore_first_item.img2.url }}" alt="" style="border-radius: 20px;">
+                    <h4>{{ explore_first_item.title2 }}</h4>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="line-dec"></div>
+                    <div class="row">
+                      <div class="col-lg-3 col-sm-6">
+                        <span>{{ explore_first_item.subtitle1 }}: <br> <strong>{{ explore_first_item.info1 }}</strong></span>
+                      </div>
+                      <div class="col-lg-3 col-sm-6">
+                        <span>{{ explore_first_item.subtitle2 }}: <br> <strong>{{ explore_first_item.info2 }}</strong></span>
+                      </div>
+                      <div class="col-lg-3 col-sm-6">
+                        <span>{{ explore_first_item.subtitle3 }}:: <br> <strong>{{ explore_first_item.info3 }}</strong></span>
+                      </div>
+                      <div class="col-lg-3 col-sm-6">
+                        <span>{{ explore_first_item.subtitle4 }}: <br> <strong>{{ explore_first_item.info4 }}</strong></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-12">
+                    <div class="main-button">
+                      <a href="/detail/1/">{{ explore_first_item.btn_name2 }}</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% for i in explore_items %}
+              <div class="col-lg-3">
+                <div class="item">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <span class="author">
+                        <img src="{{ i.profile_img.url }}" alt="" style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                      </span>
+                      <img src="{{ i.img.url }}" alt="" style="border-radius: 20px;">
+                      <h4>{{ i.title }}</h4>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="line-dec"></div>
+                      <div class="row">
+                        <div class="col-6">
+                          <span>{{ explore_first_item.subtitle1 }}: <br> <strong>{{ i.info1 }}</strong></span>
+                        </div>
+                        <div class="col-6">
+                          <span>{{ explore_first_item.subtitle4 }}: <br> <strong>{{ i.info2 }}</strong></span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="main-button">
+                        <a href="/detail/1/">{{ explore_first_item.btn_name2 }}</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="top-seller">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="section-heading">
+                <div class="line-dec"></div>
+                <h2>{{ titles.title9 }}.</h2>
+              </div>
+            </div>
+            {% for i in explore_top_seller %}
+              <div class="col-lg-3 col-sm-6">
+                <div class="row">
+                  <div class="col-lg-12">
+                    <div class="item">
+                      <h4>{{ i.id }}.</h4>
+                      <img src="{{ i.img.url }}" alt="" style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                      <h6>{{ i.title }}<br><a href="#">{{ i.subtitle }}</a></h6>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+            
+          </div>
+        </div>
+      </div>
+  {% endblock %}
